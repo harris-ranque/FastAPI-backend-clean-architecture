@@ -17,3 +17,6 @@ def load_settings(env: ValidEnvs | None = None) -> AppSettings:
         env = get_current_env()
     raw_config = load_full_config(env)
     return AppSettings.model_validate(raw_config)
+
+
+
