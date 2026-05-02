@@ -7,7 +7,7 @@ from fastapi.responses import ORJSONResponse
 
 from app.infrastructure.persistence_sqla.mappings.all import map_tables
 from app.presentation.http.auth.asgi_middleware import (
-    ASGAuthMiddleware,
+    ASGIAuthMiddleware,
     )
 from app.presentation.http.controllers.root_router import create_root_router
 from app.setup.config.settings import AppSettings
@@ -31,7 +31,7 @@ def create_web_app() -> FastAPI:
         default_response_class=ORJSONResponse,
     )
     # https://github.com/encode/starlette/discussions/2451
-    app.add_middleware(ASGAuthMiddleware)
+    app.add_middleware(ASGIAuthMiddleware)
     # Good place to register global exception handlers
     app.include_router(create_root_router())
     return app
