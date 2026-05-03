@@ -10,12 +10,12 @@ from app.application.common.exceptions.authorization import AuthorizationError
 from app.infrastructure.auth.exceptions import AuthenticationError
 from app.infrastructure.auth.handlers.log_out import LogOutHandler
 from app.infrastructure.exceptions.gateway import DataMapperError
-from app.presentation.http.auth.openapi_maker import cookie_scheme
+from app.presentation.http.auth.openapi_marker import cookie_scheme
 from app.presentation.http.errors.callbacks import (
     log_error,
     log_info,
     )
-from app.presentationhttp.errors.translators import (
+from app.presentation.http.errors.translators import (
     ServiceUnavailableTranslator,
 )
 
