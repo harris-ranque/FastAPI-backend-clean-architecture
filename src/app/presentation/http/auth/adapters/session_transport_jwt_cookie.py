@@ -14,7 +14,7 @@ from app.presentation.http.auth.constants import (
     COOKIE_ACCESS_TOKEN_NAME,
     REQUEST_STATE_COOKIE_PARAMS_KEY,
     REQUEST_STATE_DELETE_ACCESS_TOKEN_KEY,
-    REQUEST_STATE_NEW_ACCESS_TOKEN_KEY,c
+    REQUEST_STATE_NEW_ACCESS_TOKEN_KEY,
 )
 from app.presentation.http.auth.cookie_params import CookieParams
 

@@ -1,6 +1,6 @@
 from datetime import UTC, datetime, timedelta
 
-class UtcAuthSessiontimer:
+class UtcAuthSessionTimer:
     def __init__(self, ttl_min: timedelta, refresh_threshold: float) -> None:
         self._ttl_min = ttl_min
         self._refresh_threshold = refresh_threshold

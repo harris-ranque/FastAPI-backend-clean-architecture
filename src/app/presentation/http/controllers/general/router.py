@@ -7,3 +7,4 @@ from app.presentation.http.controllers.general.health import (
 def create_general_router() -> APIRouter:
     router = APIRouter(tags=["General"])
     router.include_router(create_health_router())
+    return router

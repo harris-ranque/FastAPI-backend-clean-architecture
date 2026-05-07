@@ -13,7 +13,7 @@ users_table = Table(
     "users",
     mapper_registry.metadata,
     Column("id", UUID(as_uuid=True), primary_key=True),
-    Column("username", String(Username.MAX_LENGTH), nullable=False, unique=True),
+    Column("username", String(Username.MAX_LEN), nullable=False, unique=True),
     Column("password_hash", LargeBinary, nullable=False),
     Column("role", Enum(UserRole, name="userrole"), default=UserRole.USER, nullable=False),
     Column("is_active", Boolean, default=True, nullable=False),

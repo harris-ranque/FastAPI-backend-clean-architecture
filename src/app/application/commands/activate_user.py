@@ -16,7 +16,7 @@ from app.application.common.services.authorization.permissions import (
     RoleManagementContext,
     UserManagementContext
 )
-from app.application.common.service.current_user import CurrentUserService
+from app.application.common.services.current_user import CurrentUserService
 from app.domain.entities.user import User
 from app.domain.enums.user_role import UserRole
 from app.domain.exceptions.user import (
@@ -44,10 +44,10 @@ class ActivateUserInteractor:
         user_service: UserService,
         transaction_manager: TransactionManager,
     ):
-        self.current_user_service = current_user_service
-        self.user_command_gateway = user_command_gateway
-        self.user_service = user_service
-        self.transaction_manager = transaction_manager
+        self._current_user_service = current_user_service
+        self._user_command_gateway = user_command_gateway
+        self._user_service = user_service
+        self._transaction_manager = transaction_manager
 
     async def execute(self, request_data: ActivateUserRequest) -> None:
         """
@@ -81,10 +81,10 @@ class ActivateUserInteractor:
             CanManageSubordinate(),
             context=UserManagementContext(
                 subject=current_user,
-                target_user=user,
+                target=user,
             )
         )
-        if self._user_service.toggle_user_activation(user, is_activate=True):
+        if self._user_service.toggle_user_activation(user, is_active=True):
             await self._transaction_manager.commit()
         log.info(f"Activate user: done. Target user ID: '%s'.", user.id_.value)
 

@@ -47,14 +47,14 @@ def create_create_user_router() -> APIRouter:
         error_map={
             AuthenticationError: status.HTTP_401_UNAUTHORIZED,
             DataMapperError: rule(
-                status=status.Http_503_service_unavailable,
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
                 translator=ServiceUnavailableTranslator(),
                 on_error=log_error
             ),
             AuthorizationError: status.HTTP_403_FORBIDDEN,
             DomainTypeError: status.HTTP_400_BAD_REQUEST,
             PasswordHasherBusyError: rule(
-                status=status.Http_503_service_unavailable,
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
                 translator=ServiceUnavailableTranslator(),
                 on_error=log_error
             ),
@@ -63,7 +63,7 @@ def create_create_user_router() -> APIRouter:
 
         },
         default_on_error=log_info,
-        status_code=status.Http_201_created,
+        status_code=status.HTTP_201_CREATED,
         dependencies=[Security(cookie_scheme)],
     )
     @inject

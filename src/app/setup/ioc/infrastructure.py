@@ -40,7 +40,7 @@ from app.infrastructure.auth.session.ports.transaction_manager import (
 )
 from app.infrastructure.auth.session.ports.transport import AuthSessionTransport
 from app.infrastructure.auth.session.service import AuthSessionService
-from app.infrastructure.auth.session.timer_utc import UtcAuthSessiontimer
+from app.infrastructure.auth.session.timer_utc import UtcAuthSessionTimer
 from app.infrastructure.exceptions import gateway
 from app.presentation.http.auth.adapters.session_transport_jwt_cookie import (
     JwtCookieAuthSessionTransport,
@@ -149,8 +149,8 @@ class AuthSessionProvider(Provider):
     def provide_utc_auth_session_timer(
         self,
         security: SecuritySettings,
-    ) -> UtcAuthSessiontimer:
-        return UtcAuthSessiontimer(
+    ) -> UtcAuthSessionTimer:
+        return UtcAuthSessionTimer(
             ttl_min=security.auth.session_ttl_min,
             refresh_threshold=security.auth.session_refresh_threshold
         )

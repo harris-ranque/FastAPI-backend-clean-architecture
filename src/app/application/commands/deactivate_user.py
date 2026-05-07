@@ -93,7 +93,7 @@ class DeactivateUserInteractor:
             )
         )
 
-        if self._user_service.toggle_user_activation(user, is_activate=False):
+        if self._user_service.toggle_user_activation(user, is_active=False):
             await self._transaction_manager.commit()
 
         await self._access_revoker.remove_all_user_access(user.id_)

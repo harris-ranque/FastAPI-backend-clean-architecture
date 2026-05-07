@@ -9,7 +9,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from app.application.common.exceptions.authorization import AuthorizationError
 from app.application.common.exceptions.query import PaginationError, SortingError
-from app.application.common.ports.user_query_gateway import ListUserQM
+from app.application.common.ports.user_query_gateway import ListUsersQM
 from app.application.common.query_params.sorting import SortingOrder
 from app.application.queries.list_users import (
     ListUsersQueryService,
@@ -62,7 +62,7 @@ def create_list_users_router() -> APIRouter:
     async def list_users(
         request_data_pydantic: Annotated[ListUserRequestPydantic, Depends()],
         interactor: FromDishka[ListUsersQueryService],
-    ) -> ListUserQM:
+    ) -> ListUsersQM:
         request_data = ListUsersRequest(
             limit=request_data_pydantic.limit,
             offset=request_data_pydantic.offset,

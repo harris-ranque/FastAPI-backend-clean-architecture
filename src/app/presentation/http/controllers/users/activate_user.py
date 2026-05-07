@@ -34,7 +34,7 @@ def create_activate_user_router() -> APIRouter:
         error_map={
             AuthenticationError: status.HTTP_401_UNAUTHORIZED,
             DataMapperError: rule(
-                status=status.Http_503_service_unavailable,
+                status=status.HTTP_503_SERVICE_UNAVAILABLE,
                 translator=ServiceUnavailableTranslator(),
                 on_error=log_error
             ),

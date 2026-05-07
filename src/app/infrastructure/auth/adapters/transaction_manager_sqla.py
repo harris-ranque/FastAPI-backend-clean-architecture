@@ -16,7 +16,7 @@ from app.infrastructure.exceptions.gateway import DataMapperError
 
 log = logging.getLogger(__name__)
 
-class SqlaAuthSessionTransactionManger(AuthSessionTransactionManager):
+class SqlaAuthSessionTransactionManager(AuthSessionTransactionManager):
     def __init__(self, session: AuthAsyncSession) -> None:
         self._session = session
     
