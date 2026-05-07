@@ -1,3 +1,5 @@
+import logging
+
 from dishka import Provider
 from dishka.integrations.fastapi import setup_dishka
 from fastapi import FastAPI
@@ -16,7 +18,7 @@ def make_app(
         settings = load_settings()
     configure_logging(level=settings.logs.level)
 
-    app: FastAPI = create_web_app(settings, *di_providers)
+    app: FastAPI = create_web_app()
     container = create_ioc_container(settings, *di_providers)
     setup_dishka(container, app)
     return app
@@ -26,6 +28,7 @@ if __name__ == "__main__":
     import uvicorn
     import sys
     loop = "uvloop" if sys.platform != "win32" else "asyncio"
+
 
     uvicorn.run(
         app=make_app(),

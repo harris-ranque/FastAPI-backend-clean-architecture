@@ -2,7 +2,7 @@ import logging
 
 from app.application.common.exceptions.authorization import AuthorizationError
 from app.application.common.ports.access_revoker import AccessRevoker
-from app.application.common.ports.identify_provider import IdentityProvider
+from app.application.common.ports.identity_provider import IdentityProvider
 from app.application.common.ports.user_command_gateway import UserCommandGateway
 from app.application.common.services.constants import (
     AUTHZ_NO_CURRENT_USER,
@@ -34,7 +34,7 @@ class CurrentUserService:
             current_user_id,
             for_update=for_update
         )
-        if user is None or not user.is_activate:
+        if user is None or not user.is_active:
             log.warning("%s ID: %s.", AUTHZ_NO_CURRENT_USER, current_user_id)
             await self._access_revoker.remove_all_user_access(current_user_id)
             raise AuthorizationError(AUTHZ_NOT_AUTHORIZED)

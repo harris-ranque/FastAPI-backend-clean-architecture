@@ -16,7 +16,7 @@ from app.infrastructure.auth.session.ports.transaction_manager import (
 )
 from app.infrastructure.auth.session.ports.transport import AuthSessionTransport
 from app.infrastructure.auth.session.timer_utc import UtcAuthSessionTimer
-from app.infrastructure.exceptions.gateway import DateMapperError
+from app.infrastructure.exceptions.gateway import DataMapperError
 
 log = logging.getLogger(__name__)
 
