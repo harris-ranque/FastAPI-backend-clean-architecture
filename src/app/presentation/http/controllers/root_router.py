@@ -15,5 +15,5 @@ def create_root_router() -> APIRouter:
 
         return RedirectResponse(url="/docs")
 
-    router.include_router(create_api_v1_router())
+    router.include_router(create_api_v1_router())    
     return router

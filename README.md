@@ -108,3 +108,18 @@ App logging is initialized in `src/app/run.py` via:
 
 - Root route `/` redirects to `/docs`.
 - On startup, SQLAlchemy mappings are initialized in app lifespan.
+
+## Frontend (Next.js)
+
+A Next.js frontend is available in `frontend/` and wired to existing APIs.
+
+Quick start:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Set `NEXT_PUBLIC_API_BASE_URL` in `frontend/.env.local` if needed
+(default is `http://localhost:8000/api/v1`).
